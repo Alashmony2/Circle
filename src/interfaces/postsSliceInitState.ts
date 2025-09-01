@@ -1,5 +1,5 @@
 import { PostI } from "./Post";
 
-export interface postsSliceIntialState  {
+export interface postsSliceInitState  {
     posts: PostI[]
 }

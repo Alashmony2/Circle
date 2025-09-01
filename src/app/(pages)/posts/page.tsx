@@ -1,12 +1,18 @@
-'use client'
-import { log } from 'console';
-import React from 'react'
-import { useSelector } from 'react-redux'
+"use client";
+import { PostI } from "@/interfaces/Post";
+import { getAllPosts } from "@/redux/slices/postsSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Posts() {
-  const {posts} = useSelector((state:any)=>state.posts);
+  const dispatch = useDispatch<any>()
+  const { posts }: { posts: PostI[] } = useSelector(
+    (state: any) => state.posts
+  );
   console.log(posts);
-  
-  return <div>Posts</div>
-  
+  useEffect(()=>{
+    dispatch(getAllPosts())
+  },[])
+
+  return <div>Posts</div>;
 }
